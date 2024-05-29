@@ -102,6 +102,70 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+    //step 2
+    let buttons = Array.from(document.querySelectorAll('button'));
+
+    buttons.forEach(button => {
+      button.addEventListener('click', e => {
+        let buttonText = e.target.innerText;
+        let demoData = { name: 'Terence', age: 19, city: 'San Diego' };
+        let demoArray = ['Apple', 'Banana', 'Pear'];
+
+        switch(buttonText) {
+          case 'Console Log':
+            console.log('Console Log Demo');
+            break;
+          case 'Console Error':
+            console.error('Console Error Demo');
+            break;
+          case 'Console Count':
+            //it willincrement on its own
+            console.count('Count Button: ');
+            break;
+          case 'Console Warn':
+            console.warn('Console Warn Button');
+            break;
+          case 'Console Assert':
+            console.assert(false);
+            //should not ouptut anything
+            console.assert(true);
+            break;
+          case 'Console Clear':
+            console.clear();
+            break;
+          case 'Console Dir':
+            console.dir(button);
+            break;
+          case 'Console dirxml':
+            console.dirxml(button);
+            break;
+          case 'Console Group Start':
+            console.group('console.group');
+            break;
+          case 'Console Group End':
+            console.groupEnd();
+            break;
+          case 'Console Table':
+            //Two tables will be displayed in the console
+            console.table(demoData);
+            console.table(demoArray);
+            break;
+          case 'Start Timer':
+            console.time('Demo Timer');
+            break;
+          case 'End Timer':
+            console.timeEnd('Demo Timer');
+            break;
+          case 'Console Trace':
+            console.trace('console.trace');
+            break;
+          case 'Trigger a Global Error':
+            nonExistentFunction();
+            break;
+        }
+      });
+    });
+    
   </script>
 </body>
 
