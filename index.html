@@ -95,7 +95,14 @@
       let firstNum = document.querySelector('#first-num').value;
       let secondNum = document.querySelector('#second-num').value;
       let operator = document.querySelector('#operator').value;
-      output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      //step 3
+      try{
+        output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      } catch(error){
+        test();
+      }finally {
+        console.log('finally part of try block');
+      }
     });
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
@@ -160,12 +167,22 @@
             console.trace('console.trace');
             break;
           case 'Trigger a Global Error':
-            nonExistentFunction();
+            test();
             break;
         }
       });
     });
-    
+    //step 4
+    class ValidationError extends Error {
+      constructor(message) {
+        super(message);
+        this.name = "nah bro this is wrong🫵😭";
+      }
+    }
+
+    function test() {
+      throw new ValidationError();
+    } 
   </script>
 </body>
 
