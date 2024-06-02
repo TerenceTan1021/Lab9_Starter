@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en">                
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -86,7 +85,15 @@
       <button>Trigger a Global Error</button>
     </section>
   </main>
-
+  
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "308cadc8537445a2926df1d6c5565b00"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+  </script>
+          
   <script>
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
@@ -166,8 +173,14 @@
           case 'Console Trace':
             console.trace('console.trace');
             break;
+          //step 5
           case 'Trigger a Global Error':
-            test();
+            try{
+              test();
+            } catch(error){
+              console.log("nah this wrong");
+              console.error(error);
+            }
             break;
         }
       });
