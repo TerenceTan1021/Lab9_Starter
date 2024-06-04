@@ -175,13 +175,8 @@
             break;
           //step 5
           case 'Trigger a Global Error':
-            try{
-              test();
-            } catch(error){
-              console.log("nah this wrong");
-              console.error(error);
-            }
-            break;
+            console.log('Trigger a Global Error');
+            throw new Error('Global Error');
         }
       });
     });
