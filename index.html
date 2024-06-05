@@ -175,11 +175,17 @@
             break;
           //step 5
           case 'Trigger a Global Error':
-            console.log('Trigger a Global Error');
+            console.log('This is just not correct ;/');
             throw new Error('Global Error');
+            break;
         }
       });
     });
+    // Step 5 adds 2 more mesages using window.onerror
+    window.onerror = function(event, source, lineno, colno, error) {
+      console.log("Global Error:" + event);
+      console.log("Source: " + source); 
+    };
     //step 4
     class ValidationError extends Error {
       constructor(message) {
@@ -189,7 +195,7 @@
     }
 
     function test() {
-      throw new ValidationError();
+      throw new ValidationError("hi");
     } 
   </script>
 </body>
